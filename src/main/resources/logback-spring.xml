@@ -1,0 +1,9 @@
+<configuration>
+    <springProfile name="test,dev">
+        <include resource="logback-spring-stdout.xml"/>
+    </springProfile>
+
+    <springProfile name="stage,prod">
+        <include resource="logback-spring-json.xml"/>
+    </springProfile>
+</configuration>

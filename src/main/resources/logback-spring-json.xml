@@ -1,0 +1,20 @@
+<configuration>
+
+    <appender name="JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <fieldNames>
+                <timestamp>timestamp</timestamp>
+                <level>level</level>
+                <logger>logger</logger>
+                <message>message</message>
+                <context>context</context>
+                <thread>thread</thread>
+            </fieldNames>
+        </encoder>
+    </appender>
+
+    <root level="TRACE">
+        <appender-ref ref="JSON_CONSOLE" />
+    </root>
+
+</configuration>
