@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface PlatformStrategyInterface {
 
-	boolean supported(String platformName);
+	boolean supported(String platform);
 
 	void handle(String rawPayload, HttpHeaders headers);
 

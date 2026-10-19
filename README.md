@@ -22,7 +22,7 @@ curl -i -X POST http://localhost:8081/zoom \
 docker compose logs -f webhook-hub
 ```
 
-For a `meeting.ended` event the platform strategy logs the raw data (`platformName; event; payload`, line breaks in the payload are replaced by spaces) and both `ZoomMeetingEndedSubStrategy` and `FoundrySubStrategy` log. For `meeting.started` only `FoundrySubStrategy` logs:
+For a `meeting.ended` event the platform strategy logs the raw data (`platform; event; payload`, line breaks in the payload are replaced by spaces) and both `ZoomMeetingEndedSubStrategy` and `FoundrySubStrategy` log. For `meeting.started` only `FoundrySubStrategy` logs:
 
 ```
 INFO  ... RawDataSaveService - zoom; meeting.ended; {"event": "meeting.ended", "payload": {"object": {"id": "123456789"}}}

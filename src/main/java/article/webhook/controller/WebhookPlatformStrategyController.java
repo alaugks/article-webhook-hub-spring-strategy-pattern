@@ -23,22 +23,22 @@ public class WebhookPlatformStrategyController {
 
 	@PostMapping(
 		value = {
-			"/{platformName:[a-z]{1,16}}"
+			"/{platform:[a-z]{1,16}}"
 		}
 	)
 	public ResponseEntity<String> save(
-		@PathVariable String platformName,
+		@PathVariable String platform,
 		@RequestBody(required = false) String requestBody,
 		@RequestHeader HttpHeaders headers
 	) {
 		// Check strategy available
-		PlatformStrategyInterface strategy = platformStrategyFactory.getPlatformStrategy(platformName);
+		PlatformStrategyInterface strategy = platformStrategyFactory.getPlatformStrategy(platform);
 
 		if (strategy == null) {
 			return ResponseEntity
 				.status(HttpStatus.NOT_FOUND)
 				.contentType(MediaType.APPLICATION_JSON)
-				.body(String.format("{\"error\":\"PlatformStrategy [%s] not found\"}", platformName));
+				.body(String.format("{\"error\":\"PlatformStrategy [%s] not found\"}", platform));
 		}
 
 		try {
@@ -47,12 +47,12 @@ public class WebhookPlatformStrategyController {
 			return ResponseEntity
 				.status(HttpStatus.BAD_REQUEST)
 				.contentType(MediaType.APPLICATION_JSON)
-				.body(String.format("{\"error\":\"PlatformStrategy [%s] with JSON error\"}", platformName));
+				.body(String.format("{\"error\":\"PlatformStrategy [%s] with JSON error\"}", platform));
 		} catch (Exception e) {
 			return ResponseEntity
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)
 				.contentType(MediaType.APPLICATION_JSON)
-				.body(String.format("{\"error\":\"PlatformStrategy [%s] handle failed\"}", platformName));
+				.body(String.format("{\"error\":\"PlatformStrategy [%s] handle failed\"}", platform));
 		}
 
         return strategy.getResponse();

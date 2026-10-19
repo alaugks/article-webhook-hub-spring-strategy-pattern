@@ -2,7 +2,7 @@ package article.webhook.strategy;
 
 public interface SubStrategyInterface {
 
-	boolean supported(String platformName, String eventName);
+	boolean supported(String platform, String event);
 
 	void handle(Payload payload);
 }

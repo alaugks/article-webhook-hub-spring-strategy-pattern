@@ -13,9 +13,9 @@ public class PlatformStrategyFactory {
 		this.strategies = platformStrategies;
 	}
 
-	public PlatformStrategyInterface getPlatformStrategy(String platformName) {
+	public PlatformStrategyInterface getPlatformStrategy(String platform) {
 		for (PlatformStrategyInterface strategy : strategies) {
-			if (strategy.supported(platformName)) {
+			if (strategy.supported(platform)) {
 				return strategy;
 			}
 		}

@@ -5,17 +5,17 @@ import org.springframework.http.ResponseEntity;
 
 public abstract class PlatformStrategyAbstract implements PlatformStrategyInterface {
 
-	private final String platformName;
+	private final String platform;
 
     protected PlatformStrategyAbstract(
-        String platformName
+        String platform
 	) {
-        this.platformName = platformName;
+        this.platform = platform;
     }
 
 	@Override
-	public boolean supported(String platformName) {
-		return this.platformName.equals(platformName);
+	public boolean supported(String platform) {
+		return this.platform.equals(platform);
 	}
 
 	@Override

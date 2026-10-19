@@ -7,8 +7,8 @@ public abstract class SubStrategyAbstract implements SubStrategyInterface {
 
 	private final Map<String, Set<String>> supported;
 
-    protected SubStrategyAbstract(String platformName, String eventName) {
-        this.supported = Map.of(platformName, Set.of(eventName));
+    protected SubStrategyAbstract(String platform, String event) {
+        this.supported = Map.of(platform, Set.of(event));
     }
 
 	protected SubStrategyAbstract(Map<String, Set<String>> supported) {
@@ -16,7 +16,7 @@ public abstract class SubStrategyAbstract implements SubStrategyInterface {
 	}
 
 	@Override
-	public boolean supported(String platformName, String eventName) {
-		return supported.getOrDefault(platformName, Set.of()).contains(eventName);
+	public boolean supported(String platform, String event) {
+		return supported.getOrDefault(platform, Set.of()).contains(event);
 	}
 }

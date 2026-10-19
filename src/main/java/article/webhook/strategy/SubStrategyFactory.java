@@ -12,9 +12,9 @@ public class SubStrategyFactory {
 		this.strategies = strategies;
 	}
 
-	public List<SubStrategyInterface> getAllSubStrategies(String platformName, String eventName) {
+	public List<SubStrategyInterface> getAllSubStrategies(String platform, String event) {
 		return strategies.stream()
-			.filter(strategy -> strategy.supported(platformName, eventName))
+			.filter(strategy -> strategy.supported(platform, event))
 			.toList();
 	}
 }
